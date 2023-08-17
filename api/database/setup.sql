@@ -5,9 +5,11 @@ CREATE TABLE entries (
   title VARCHAR (50) UNIQUE NOT NULL,
   content VARCHAR(1000),
   category VARCHAR(50),
-  created TIMESTAMP NOT NULL DEFAULT(current_timestamp),
+  created TIMESTAMP NOT NULL DEFAULT(CURRENT_TIMESTAMP),
   PRIMARY KEY (id)
 );
+
+SET TIMEZONE = 'Europe/London';
 
 INSERT INTO entries
   (title, content, category)
