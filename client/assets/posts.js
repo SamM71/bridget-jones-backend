@@ -13,29 +13,29 @@ function createPostElement (data) {
   return post;
 }
 
-// document.getElementById("post-form").addEventListener("submit", async (e) => {
-//   e.preventDefault();
+document.getElementById("post-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-//   const form = new FormData(e.target);
+  const form = new FormData(e.target);
 
-//   const options = {
-//       method: "POST",
-//       headers: {
-//           'Accept': 'application/json',
-//           'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({
-//           title: form.get("title"),
-//           content: form.get("content")
-//       })
-//   }
+  const options = {
+      method: "POST",
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          title: form.get("title"),
+          content: form.get("content")
+      })
+  }
 
-//   const result = await fetch("http://localhost:3000/entries", options);
+  const result = await fetch("http://localhost:3000/entries", options);
 
-//   if (result.status == 201) {
-//       window.location.reload();
-//   }
-// })
+  if (result.status == 201) {
+      window.location.reload();
+  }
+})
 
 
 async function loadPosts () {
