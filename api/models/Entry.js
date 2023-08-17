@@ -26,6 +26,14 @@ class Entry {
     }
     return new Entry(response.rows[0])
   }
+  
+  static async getByCategory(category) {
+    const response = await db.query("SELECT * FROM entries WHERE category = $1", [category]);
+    if (response.rows.length === 0) {
+      throw new Error("No entries available.");
+    }
+    return response.rows.map(e => new Entry(e))
+  }
 
   static async create(data) {
     const { title, content, category } = data;

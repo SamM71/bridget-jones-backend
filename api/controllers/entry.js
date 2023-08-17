@@ -19,6 +19,16 @@ async function show(req, res) {
   }
 }
 
+async function getByCategory(req, res) {
+  try {
+    const category = req.params.category;
+    const entries = await Entry.getByCategory(category);
+    res.status(200).json(entries);
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+}
+
 async function create(req, res) {
   try {
     const entry = await Entry.create(req.body);
@@ -56,6 +66,7 @@ async function destroy(req, res) {
 module.exports = {
   index,
   show,
+  getByCategory,
   create,
   update,
   destroy
