@@ -6,6 +6,9 @@ body {
 }
 h1 {
   font-size: 40px;
+  background-color: aquamarine;
+  padding: 5vh;
+  margin-top: 0px;
 }
 
 main {
@@ -13,7 +16,7 @@ main {
 }
 
 em {
-  font-size: 33px;
+  font-size: 38px;
 }
 
 .post-category {
