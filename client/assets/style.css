@@ -16,6 +16,11 @@ em {
   font-size: 33px;
 }
 
+.post-category {
+  margin: 0px;
+  padding: 0px;
+}
+
 #title {
   padding: 1vh;
   font-size: 20px;
@@ -38,5 +43,13 @@ fieldset {
   margin: 2vh;
 }
 
+.post {
+  background-color: gainsboro;
+  margin: 20px 300px;
+}
+
+.post-header {
+  margin-bottom: 0px;
+}
 
 
