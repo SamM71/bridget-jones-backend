@@ -36,6 +36,25 @@ class Entry {
     return new Entry(response.rows[0]);
   }
 
+  async update(data) {
+    const response = await db.query(
+      "UPDATE entries SET content = $1 WHERE id = $2 RETURNING id, title, content;",
+      [data.content, this.id]
+    );
+    if (response.rows.length != 1) {
+      throw new Error("Unable to update content.");
+    }
+    return new Entry(response.rows[0]);
+  }
+
+  async destroy() {
+    console.log(this.id);
+    const response = await db.query(
+      "DELETE FROM entries WHERE id = $1 RETURNING *", [this.id]
+    );
+    return new Entry(response.rows[0]);
+  }
+
 }
 
 module.exports = Entry;

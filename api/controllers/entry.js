@@ -28,8 +28,35 @@ async function create(req, res) {
   }
 }
 
+async function update(req, res) {
+  try {
+    const id = parseInt(req.params.id);
+    const data = req.body;
+    const entry = await Entry.show(id);
+    const result = await entry.update(data);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({error: error.message});
+  }
+}
+
+async function destroy(req, res) {
+  try {
+    console.log("object");
+    const id = req.params.id;
+    const entryToDelete = await Entry.show(id);
+    console.log(entryToDelete);
+    await entryToDelete.destroy();
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(404).json({error: error.message});
+  }
+}
+
 module.exports = {
   index,
   show,
-  create
+  create,
+  update,
+  destroy
 }
