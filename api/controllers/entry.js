@@ -1,6 +1,6 @@
 const Entry = require("../models/Entry")
 
-async function index (req, res) {
+async function index(req, res) {
   try {
     const entries = await Entry.index();
     res.status(200).json(entries);
@@ -9,7 +9,7 @@ async function index (req, res) {
   }
 }
 
-async function show (req, res) {
+async function show(req, res) {
   try {
     const id = parseInt(req.params.id);
     const entry = await Entry.show(id);
@@ -19,7 +19,17 @@ async function show (req, res) {
   }
 }
 
+async function create(req, res) {
+  try {
+    const entry = await Entry.create(req.body);
+    res.status(201).json(entry);
+  } catch (error) {
+    res.status(404).json({error: error.message});
+  }
+}
+
 module.exports = {
   index,
-  show
+  show,
+  create
 }

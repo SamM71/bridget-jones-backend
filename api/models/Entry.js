@@ -27,6 +27,15 @@ class Entry {
     return new Entry(response.rows[0])
   }
 
+  static async create(data) {
+    const { title, content, category } = data;
+    const response = await db.query(
+      "INSERT INTO entries (title, content, category) VALUES ($1, $2, $3) RETURNING *;",
+      [title, content, category]
+    );
+    return new Entry(response.rows[0]);
+  }
+
 }
 
 module.exports = Entry;
