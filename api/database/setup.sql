@@ -9,8 +9,6 @@ CREATE TABLE entries (
   PRIMARY KEY (id)
 );
 
-SET TIMEZONE = 'Europe/London';
-
 INSERT INTO entries
   (title, content, category)
 VALUES
