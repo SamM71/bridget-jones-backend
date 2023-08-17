@@ -5,25 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/style.css">
   <script defer src="assets/index.js"></script>
+  <script defer src="assets/posts.js"></script>
   <title>Diary Entries</title>
 </head>
 <body>
   <body>
-    <h1>Bridget Jones Diary</h1>
-    <em>Spill the beans</em>
+    <head>
+      <h1>Bridget Jones Diary</h1>
+      <em>Spill the beans</em>  
+    </head>
 
   <main>
     <form id="post-form">
-      <fieldset>
+      <fieldset id="title-input-box">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" required>
       </fieldset>
       <fieldset>
         <label for="title">Content:</label>
-        <textarea type="text" name="content" required></textarea>
+        <textarea type="text" name="content" id="content" required></textarea>
       </fieldset>
-        <input type="submit" value="post">
+        <input type="submit" value="Post" id="submit-btn">
     </form>
   </main>
+  <div id="posts"></div>
 </body>
 </html>
