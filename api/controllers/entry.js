@@ -40,9 +40,23 @@ async function update(req, res) {
   }
 }
 
+async function destroy(req, res) {
+  try {
+    console.log("object");
+    const id = req.params.id;
+    const entryToDelete = await Entry.show(id);
+    console.log(entryToDelete);
+    await entryToDelete.destroy();
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(404).json({error: error.message});
+  }
+}
+
 module.exports = {
   index,
   show,
   create,
-  update
+  update,
+  destroy
 }

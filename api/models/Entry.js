@@ -47,6 +47,14 @@ class Entry {
     return new Entry(response.rows[0]);
   }
 
+  async destroy() {
+    console.log(this.id);
+    const response = await db.query(
+      "DELETE FROM entries WHERE id = $1 RETURNING *", [this.id]
+    );
+    return new Entry(response.rows[0]);
+  }
+
 }
 
 module.exports = Entry;
