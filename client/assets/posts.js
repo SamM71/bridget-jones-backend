@@ -7,17 +7,17 @@ function createPostElement (data) {
   header.className = "post-header";
   post.appendChild(header);
 
-  const created = document.createElement("p");
-  created.textContent = `Created: ${data["created"]}`;
+  const id = document.createElement("h3");
+  id.textContent = `ID: ${data["id"]}`
+  id.className = "post-id"
+  post.appendChild(id)
 
   const category = document.createElement("h3")
   category.className = "post-category"
   category.textContent = `Category: ${data["category"]}`
   post.appendChild(category)
 
-  const content = document.createElement("p");
-  content.textContent = data["content"];
-  post.appendChild(content);
+
 
 
   return post;
@@ -68,3 +68,4 @@ async function loadPosts () {
 }
 
 loadPosts();
+
