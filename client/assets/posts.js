@@ -4,11 +4,21 @@ function createPostElement (data) {
 
   const header = document.createElement("h2");
   header.textContent = data["title"];
+  header.className = "post-header";
   post.appendChild(header);
+
+  const created = document.createElement("p");
+  created.textContent = `Created: ${data["created"]}`;
+
+  const category = document.createElement("h3")
+  category.className = "post-category"
+  category.textContent = `Category: ${data["category"]}`
+  post.appendChild(category)
 
   const content = document.createElement("p");
   content.textContent = data["content"];
   post.appendChild(content);
+
 
   return post;
 }
@@ -26,7 +36,8 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
       },
       body: JSON.stringify({
           title: form.get("title"),
-          content: form.get("content")
+          content: form.get("content"),
+          category: form.get("category")
       })
   }
 
