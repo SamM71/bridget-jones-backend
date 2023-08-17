@@ -26,6 +26,14 @@ class Entry {
     }
     return new Entry(response.rows[0])
   }
+
+  static async getByDate(date) {
+    const response = await db.query("SELECT * FROM entries WHERE date(created) = $1", [date]);
+    if (response.rows.length === 0) {
+      throw new Error("No entries available.");
+    }
+    return response.rows.map(e => new Entry(e))
+  }
   
   static async getByCategory(category) {
     const response = await db.query("SELECT * FROM entries WHERE category = $1", [category]);
@@ -56,7 +64,6 @@ class Entry {
   }
 
   async destroy() {
-    console.log(this.id);
     const response = await db.query(
       "DELETE FROM entries WHERE id = $1 RETURNING *", [this.id]
     );

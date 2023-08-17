@@ -19,6 +19,16 @@ async function show(req, res) {
   }
 }
 
+async function getByDate(req, res) {
+  try {
+    const date = req.params.created;
+    const entries = await Entry.getByDate(date);
+    res.status(200).json(entries);
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+}
+
 async function getByCategory(req, res) {
   try {
     const category = req.params.category;
@@ -52,10 +62,8 @@ async function update(req, res) {
 
 async function destroy(req, res) {
   try {
-    console.log("object");
     const id = req.params.id;
     const entryToDelete = await Entry.show(id);
-    console.log(entryToDelete);
     await entryToDelete.destroy();
     res.sendStatus(204);
   } catch (error) {
@@ -66,6 +74,7 @@ async function destroy(req, res) {
 module.exports = {
   index,
   show,
+  getByDate,
   getByCategory,
   create,
   update,
