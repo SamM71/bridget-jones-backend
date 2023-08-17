@@ -1,4 +1,4 @@
-function createPost (data) {
+function createPostElement (data) {
   const post = document.createElement("div");
   post.className = "post";
 
