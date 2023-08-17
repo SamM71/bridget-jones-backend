@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+ text-align: center;
+ font-size: 30px;
+}
+h1 {
+  font-size: 40px;
+}
+
+main {
+  font-size: 35pxh;
+}
+
+em {
+  font-size: 33px;
+  border-bottom: 2px solid black;
+}
+
+#title {
+  padding: 1vh;
+  font-size: 20px;
+}
+
+#content {
+  height: 10vw;
+  width: 28vw;
+  font-size: 20px;
+}
+
+fieldset {
+  margin-left: 32vw;
+  margin-right: 32vw;
+}
+
+#submit-btn {
+  font-size: 20px;
+  padding: 1vh;
+  margin: 2vh;
+}
+
+
+
