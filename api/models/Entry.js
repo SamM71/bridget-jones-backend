@@ -11,7 +11,7 @@ class Entry {
   }
 
   static async index() {
-    const response = await db.query("SELECT * FROM entries ORDER BY created;");
+    const response = await db.query("SELECT * FROM entries ORDER BY created DESC;");
     if (response.rows.length === 0) {
       throw new Error("No entries available.");
     }
